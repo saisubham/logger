@@ -5,11 +5,11 @@ import java.io.IOException;
 import logger.models.Priority;
 import logger.services.writers.LogWriter;
 
-public class WarnLogger implements Logger {
-    private Logger nextLogger;
+public class WarnLogger extends Logger {
     private final LogWriter logWriter;
 
-    public WarnLogger(LogWriter logWriter) {
+    public WarnLogger(LogWriter logWriter, Logger next) {
+        super(next);
         this.logWriter = logWriter;
     }
 
@@ -17,17 +17,8 @@ public class WarnLogger implements Logger {
     public void log(String message, Priority priority) throws IOException {
         if (priority == Priority.WARN) {
             logWriter.write("WARN> " + message);
-            return;
+        } else {
+            super.log(message, priority);
         }
-        if (nextLogger != null) {
-            nextLogger.log(message, priority);
-            return;
-        }
-        throw new RuntimeException("cannot handle");
-    }
-
-    @Override
-    public void setNextLogger(Logger nextLogger) {
-        this.nextLogger = nextLogger;
     }
 }

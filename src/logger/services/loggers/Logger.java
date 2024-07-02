@@ -4,8 +4,17 @@ import java.io.IOException;
 
 import logger.models.Priority;
 
-public interface Logger {
-    void log(String message, Priority priority) throws IOException;
+public class Logger {
 
-    void setNextLogger(Logger nextLogger);
+    private final Logger next;
+
+    public Logger(Logger next) {
+        this.next = next;
+    }
+
+    public void log(String message, Priority priority) throws IOException {
+        if (next != null) {
+            next.log(message, priority);
+        }
+    }
 }

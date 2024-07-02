@@ -47,14 +47,7 @@ public class Main {
     }
 
     private static Logger getLogger(LogWriter writer) {
-        Logger errorLogger = new ErrorLogger(writer);
-        Logger warnLogger = new WarnLogger(writer);
-        Logger infoLogger = new InfoLogger(writer);
-
-        errorLogger.setNextLogger(warnLogger);
-        warnLogger.setNextLogger(infoLogger);
-
-        return errorLogger;
+        return new InfoLogger(writer, new WarnLogger(writer, new ErrorLogger(writer, null)));
     }
 
     private static Runnable getLoggerTask(Logger logger) {
