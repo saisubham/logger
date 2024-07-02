@@ -21,5 +21,4 @@ public class ErrorLogger extends Logger {
             super.log(message, priority);
         }
     }
-
 }

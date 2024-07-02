@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class FileLogWriter implements LogWriter {
-
     private final BufferedWriter bufferedWriter;
     private final ReentrantReadWriteLock lock;
 

@@ -22,7 +22,6 @@ import static logger.models.Priority.INFO;
 import static logger.models.Priority.WARN;
 
 public class Main {
-
     private static final Random RANDOM = new Random();
     private static final List<Priority> PRIORITY_LIST = List.of(INFO, WARN, ERROR);
 

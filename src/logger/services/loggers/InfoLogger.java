@@ -20,7 +20,5 @@ public class InfoLogger extends Logger {
         } else {
             super.log(message, priority);
         }
-
     }
-
 }

@@ -5,7 +5,6 @@ import java.io.IOException;
 import logger.models.Priority;
 
 public class Logger {
-
     private final Logger next;
 
     public Logger(Logger next) {
